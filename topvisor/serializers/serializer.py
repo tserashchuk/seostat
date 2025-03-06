@@ -17,7 +17,7 @@ class MonitoringGroupResultSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MonitoringGroupResult
-        fields = ("avg", "median", "visibility", "top1_3", "group" )
+        fields = ("avg", "median", "visibility", "top1_3", "top1_10",  "top11_30",  "top31_50",  "top51_100",  "top101_1000",  "date_from_topvisor_from",  "date_from_topvisor_to",  "date_sended_to_topvisor",  "group")
         extra_kwargs = {'group': {'required': False}}
 
 
