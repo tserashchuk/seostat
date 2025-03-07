@@ -36,6 +36,7 @@ class Command(BaseCommand):
                 data['filters'] = [{"name": 'group_id',"operator":'EQUALS',"values":[group.group_id]},]
             response = requests.post('https://api.topvisor.com/v2/json/get/positions_2/summary?project_id=8314284', json=data, headers=self.headers)
             print('2',response)
+            print(data)
             if response.status_code == 200:
                 res_payload_dict = response.json()
                 new_record = MonitoringGroupResult(
@@ -54,5 +55,6 @@ class Command(BaseCommand):
                     group=group
                     )
                 new_record.save()
+                print('saved')
             print('3')    
         # собираем html
