@@ -31,10 +31,11 @@ class Command(BaseCommand):
                 'show_median':1,
                 "show_visibility":1,
                 }   
-            
+            print('1')
             if not group.filterbygroup:
                 data['filters'] = [{"name": 'group_id',"operator":'EQUALS',"values":[group.group_id]},]
             response = requests.post('https://api.topvisor.com/v2/json/get/positions_2/summary?project_id=8314284', json=data, headers=self.headers)
+            print('2',response)
             if response.status_code == 200:
                 res_payload_dict = response.json()
                 new_record = MonitoringGroupResult(
@@ -53,5 +54,5 @@ class Command(BaseCommand):
                     group=group
                     )
                 new_record.save()
-                
+            print('3')    
         # собираем html
