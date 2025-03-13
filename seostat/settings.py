@@ -136,20 +136,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
-import os
-# REDIS related settings
-# REDIS_HOST = 'ec2-52-212-133-20.eu-west-1.compute.amazonaws.com'
-# REDIS_PORT = '25020'
-# REDIS_PORT = '25020'
-
-
 
 CELERY_BROKER_URL = 'rediss://:p7427cde4c1301c0f24f3b41fd538badbc1fda4ecd5c9475649d5e019d9095950@ec2-52-212-133-20.eu-west-1.compute.amazonaws.com:25020'
 CELERY_RESULT_BACKEND = 'rediss://:p7427cde4c1301c0f24f3b41fd538badbc1fda4ecd5c9475649d5e019d9095950@ec2-52-212-133-20.eu-west-1.compute.amazonaws.com:25020'
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Asia/Tokyo'
-# Configure Django App for Heroku.
+
 import django_on_heroku
 django_on_heroku.settings(locals())

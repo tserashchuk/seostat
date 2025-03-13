@@ -1,7 +1,7 @@
 import os, ssl
 
 from celery import Celery
-
+import requests
 # Set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'seostat.settings')
 
@@ -30,5 +30,5 @@ logger = logging.getLogger(__name__)
 
 @app.task(bind=True, ignore_result=True)
 def debug_task(self):
-    logger.info("Hello")
-    print(f'Request: {self.request!r}')
+    requests.get('https://api.telegram.org/bot8136233806:AAGkSfMW81OkcKffxwcFuZVZul7-_n81My8/sendMessage?chat_id=553875205&text=hello%20friend')
+    print(f'Request:')
