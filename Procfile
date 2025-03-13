@@ -1,2 +1,2 @@
 web: gunicorn seostat.wsgi
-celery: celery -A worker seostat -l info -c 4
+celery: celery -A seostat worker -l info -c 4
