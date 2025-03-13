@@ -4,7 +4,7 @@ import requests
 from datetime import date, datetime, timedelta
 
 @shared_task
-def add(x):
+def add():
     headers = {
         'User-Id': '12685',
         'Authorization': 'f0b60f119642340f556b4ff05cd357ec'
