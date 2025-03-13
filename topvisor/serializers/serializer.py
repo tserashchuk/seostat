@@ -7,7 +7,7 @@ from topvisor.models import *
 class MonitoringGroupSerializer(serializers.ModelSerializer):
         class Meta:
             model = MonitoringGroup
-            fields = ('name_vertical', 'name_Group', 'domain','searchengine')
+            fields = ('name_vertical', 'name_Group', 'domain','searchengine','name_product')
 
 
 

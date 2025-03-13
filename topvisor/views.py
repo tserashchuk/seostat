@@ -4,10 +4,17 @@ from datetime import date, datetime, timedelta
 from topvisor.models import *
 from django.views import View
 import json
-from django.core import serializers
+import requests
+
 
 def index(request):
-    return HttpResponse('huh')
+    url = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https://beleuroprivod.by/&strategy=mobile&locale=ru&key=AIzaSyA8d1Veeg04Uj_LPIgyu3oqf89z-CIVmBM"
+    
+    response = requests.get(url)
+    return_text = response.text
+    data = json.loads(return_text)
+    li = data['lighthouseResult']
+    return HttpResponse(data['lighthouseResult'], content_type='application/json')
 
 class AllResultsData(View):
     def get(self, request):
