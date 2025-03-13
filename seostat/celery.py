@@ -31,5 +31,5 @@ logger = logging.getLogger(__name__)
 @app.task(bind=True, ignore_result=True)
 def debug_task(self):
     logger.info('sdfsdfd')
-    requests.get('https://api.telegram.org/bot8136233806:AAGkSfMW81OkcKffxwcFuZVZul7-_n81My8/sendMessage?chat_id=553875205&text=hello%20friend')
+    requests.get('https://api.telegram.org/bot8136233806:AAGkSfMW81OkcKffxwcFuZVZul7-_n81My8/sendMessage?chat_id=553875205&text=helliend')
     print(f'Request:')
