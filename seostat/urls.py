@@ -22,6 +22,5 @@ from topvisor.serializers.serializer import router
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='home'),
-    path('allresults', views.AllResultsData.as_view(), name='allresults'),
     path('api/',include(router.urls))
 ]

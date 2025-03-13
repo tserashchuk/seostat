@@ -39,6 +39,7 @@ class Command(BaseCommand):
             print(data)
             if response.status_code == 200:
                 res_payload_dict = response.json()
+                print(res_payload_dict)
                 new_record = MonitoringGroupResult(
                     avg=res_payload_dict['result']['avgs'][-1], 
                     median =res_payload_dict['result']['medians'][-1], 
