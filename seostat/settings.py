@@ -80,9 +80,13 @@ WSGI_APPLICATION = 'seostat.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+   'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd9fmgdm0uh014', 
+        'USER': 'uev75vgmg517ef',
+        'PASSWORD': 'pcf18bd1ca9d06922eeaf4d2a2eea441fb263a75ef140df3ed368abdf575f9bb0',
+        'HOST': 'cav8p52l9arddb.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com', 
+        'PORT': '5432',
     }
 }
 
