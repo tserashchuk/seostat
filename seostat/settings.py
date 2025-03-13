@@ -141,11 +141,14 @@ import os
 # REDIS_HOST = 'ec2-52-212-133-20.eu-west-1.compute.amazonaws.com'
 # REDIS_PORT = '25020'
 # REDIS_PORT = '25020'
-# CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+
 REDIS_URL='rediss://:p7427cde4c1301c0f24f3b41fd538badbc1fda4ecd5c9475649d5e019d9095950@ec2-52-212-133-20.eu-west-1.compute.amazonaws.com:25020'
 # for Heroku
+BROKER_URL = 'rediss://:p7427cde4c1301c0f24f3b41fd538badbc1fda4ecd5c9475649d5e019d9095950@ec2-52-212-133-20.eu-west-1.compute.amazonaws.com:25020'
 CELERY_BROKER_URL = 'rediss://:p7427cde4c1301c0f24f3b41fd538badbc1fda4ecd5c9475649d5e019d9095950@ec2-52-212-133-20.eu-west-1.compute.amazonaws.com:25020'
+CELERY_RESULT_BACKEND = 'rediss://:p7427cde4c1301c0f24f3b41fd538badbc1fda4ecd5c9475649d5e019d9095950@ec2-52-212-133-20.eu-west-1.compute.amazonaws.com:25020'
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 CELERY_SEND_EVENTS = True
 # Configure Django App for Heroku.
