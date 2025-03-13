@@ -1,11 +1,18 @@
-import os
+import os, ssl
 
 from celery import Celery
 
 # Set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'seostat.settings')
 
-app = Celery('seostat')
+app =  Celery('seostat',
+     broker_use_ssl = {
+        'ssl_cert_reqs': ssl.CERT_NONE
+     },
+     redis_backend_use_ssl = {
+        'ssl_cert_reqs': ssl.CERT_NONE
+     }
+)
 
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.
