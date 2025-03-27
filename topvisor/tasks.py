@@ -59,8 +59,6 @@ def add():
 
 @shared_task
 def create_issue_bankiros(summary,description,component,assignee):
-    logger.info(summary,description,component,assignee)
-    print(summary,description,component,assignee)
     try:
         headers = {
             'Accept': 'application/json',
@@ -78,16 +76,11 @@ def create_issue_bankiros(summary,description,component,assignee):
                 { "name": "Assignee","$type": "SingleUserIssueCustomField","value":json.loads(assignee)}
                 ]
         }
-        print(data)
+
         response = requests.post('https://youtrack.myfin.group/api/issues', data=json.dumps(data), headers=headers)
-        print(response.content)
-        if response.status_code == 200:
-            res_payload_dict = response.json()
-            print(res_payload_dict)
     except Exception as e:
         logger.info(e)
-        return(summary,description,component,assignee)
-    return 'str(response.content) + str(data)'
+    return 'f'
 
 # data = {  
 #     "project":{
@@ -102,4 +95,4 @@ def create_issue_bankiros(summary,description,component,assignee):
 # }
 
 
-# {"summary":"test","description":"test","component":"[{'name':'SEO','$type':'OwnedBundleElement'}]","assignee":"{'name': 'Кирилл Терещук', 'id': '1-305', '$type': 'User'}"}
+# {"summary":"test","description":"test","component":"[{\"name\":\"SEO\",\"$type\":\"OwnedBundleElement\"}]","assignee":"{\"name\": \"Кирилл Терещук\", \"id\": \"1-305\", \"$type\": \"User\"}"}
