@@ -2,6 +2,8 @@ from celery import shared_task
 from topvisor.models import  *
 import requests
 from datetime import date, datetime, timedelta
+import json
+
 
 @shared_task
 def add():
@@ -52,3 +54,44 @@ def add():
             new_record.save()
             print('saved')
         print('3')
+
+@shared_task
+def create_issue_bankiros(summary,description,component,assignee):
+    headers = {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer perm:0JrQuNGA0LjQu9C7X9Ci0LXRgNC10YnRg9C6.NTYtMjM=.e7p34zrnxkA3l3LBWKTXwuu0zEUxCl',
+        'Content-Type': 'application/json'
+        }
+    data = {  
+        "project":{
+            "id":"0-6",
+            },
+        "summary":summary,
+        "description":description,
+        "customFields":[
+            { "name":"Компонент","$type":"MultiOwnedIssueCustomField","value":json.loads(component)},
+            { "name": "Assignee","$type": "SingleUserIssueCustomField","value":json.loads(assignee)}
+            ]
+    }
+    print(data)
+    response = requests.post('https://youtrack.myfin.group/api/issues', data=json.dumps(data), headers=headers)
+    print(response.content)
+    if response.status_code == 200:
+        res_payload_dict = response.json()
+        print(res_payload_dict)
+    return str(response.content) + str(data)
+
+# data = {  
+#     "project":{
+#         "id":"0-6",
+#         },
+#     "summary":"REST API lets you create issues!",
+#     "description":"Let REST API.",
+#     "customFields":[
+#         { "name":"Компонент","$type":"MultiOwnedIssueCustomField","value":[{"name":"SEO","$type":"OwnedBundleElement"}]},
+#         { "name": "Assignee","$type": "SingleUserIssueCustomField","value": {'name': 'Кирилл Терещук', 'id': '1-305', '$type': 'User'}}
+#         ]
+# }
+
+
+# {"summary":"test","description":"test","component":[{"name":"SEO","$type":"OwnedBundleElement"}],"assignee":{'name': 'Кирилл Терещук', 'id': '1-305', '$type': 'User'}}
