@@ -137,7 +137,7 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
-CELERY_BROKER_URL = 'rediss://:p7427cde4c1301c0f24f3b41fd538badbc1fda4ecd5c9475649d5e019d9095950@ec2-52-212-133-20.eu-west-1.compute.amazonaws.com:25020'
+CELERY_BROKER_URL = 'rediss://:p7427cde4c1301c0f24f3b41fd538badbc1fda4ecd5c9475649d5e019d9095950@ec2-99-80-69-227.eu-west-1.compute.amazonaws.com:27530'
 CELERY_RESULT_BACKEND = "django-db"
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
 
