@@ -102,4 +102,4 @@ def create_issue_bankiros(summary,description,component,assignee):
 # }
 
 
-# {"summary":"test","description":"test","component":[{"name":"SEO","$type":"OwnedBundleElement"}],"assignee":{'name': 'Кирилл Терещук', 'id': '1-305', '$type': 'User'}}
+# {"summary":"test","description":"test","component":"[{'name':'SEO','$type':'OwnedBundleElement'}]","assignee":"{'name': 'Кирилл Терещук', 'id': '1-305', '$type': 'User'}"}
