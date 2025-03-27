@@ -59,6 +59,8 @@ def add():
 
 @shared_task
 def create_issue_bankiros(summary,description,component,assignee):
+    logger.info(summary,description,component,assignee)
+    print(summary,description,component,assignee)
     try:
         headers = {
             'Accept': 'application/json',
@@ -84,6 +86,7 @@ def create_issue_bankiros(summary,description,component,assignee):
             print(res_payload_dict)
     except Exception as e:
         logger.info(e)
+        return(summary,description,component,assignee)
     return 'str(response.content) + str(data)'
 
 # data = {  
